@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 //программа пропускает пробелы при переводе на азбуку Морза, есть возможность перевода и кириллиццы и латиницы
 //проверка на допустимость символов производиться при самом переводе, пользователю даётся возможность продолжить перевод при ошибке,
 //но неизвестный символ обозначается как ········ в азбуке Морза обозначает ошибку
@@ -33,8 +34,9 @@ namespace Dz_33
     {"аa·−","бb−···","вw·−−","гg−−·","дd−··","еe·","ёe·","жv···−","зz−−··","иi··","йj·−−−","кk−·−","лl·−··","мm−−","нn−·","оo−−−","пp·−−·","рr·−·","сs···","тt−","уu··−","фf··−·","хh····",
 "цc−·−·","чч−−−·","шш−−−−","щq−−·−","ъъ−−·−−","ыy−·−−","ьx−··−","ээ··−··","юю··−−","яя·−·−","11·−−−−","22··−−−","33···−−","44····−","55·····","66−····","77−−···","88−−−··","99−−−−·","00−−−−−","..······",",,·−·−·−","::−−−···",";;−·−·−·","((−·−−·−","))−·−−·−","''·−−−−·","\"\"·−··−·",
 "——−····−","\\\\−··−·","__··−−·−","??··−−··","!!−−··−−","++·−·−·","//−···−","--−····−"};
-            string stroutput = "", strinput = tbInput.Text.ToLower(), err = "········"; ;
+            string stroutput = "", strinput = tbInput.Text.ToLower(), err = "········", whitespace= "·······";
             bool f;
+            strinput = Regex.Replace(strinput, "[ ]+", " ").Trim();
             try
             {
                 for (int i = 0; i < strinput.Length; i++)
@@ -50,6 +52,7 @@ namespace Dz_33
                         }
                         if (Char.IsWhiteSpace(strinput[i]))
                         {
+                            stroutput += whitespace;
                             f = true;
                             break;
                         }
@@ -74,7 +77,7 @@ namespace Dz_33
                     }
 
                 }
-                tbOutput.Text = stroutput;
+             tbOutput.Text = stroutput;
             }
             catch (OutOfMemoryException) 
             {

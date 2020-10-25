@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dz_33"
         mc:Ignorable="d"
-        Title="Домашняя работа №3 Молчанов Михаил УТС-21" Height="420" Width="750" WindowStartupLocation="CenterScreen">
+        Title="Домашняя работа №3 Молчанов Михаил УТС-21" Height="420" Width="750" WindowStartupLocation="CenterScreen" MinWidth="750" MinHeight="420">
     <Grid x:Name="field" Background="#FF4F1350" MinHeight="368" MinWidth="750">
         <Grid.RowDefinitions>
             <RowDefinition Height="120*"/>
